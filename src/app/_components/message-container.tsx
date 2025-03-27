@@ -1,45 +1,52 @@
 "use client"
-import { UIMessage } from "ai";
+import { Role } from "@11labs/react";
 import Markdown from 'react-markdown'
 import { motion } from "motion/react";
+import { AiBot } from "@/components/ai/ai-bot";
+import { cn } from "@/lib/utils";
+import { useEffect } from "react";
 export function MessageContainer({
   messages,
   isLoading,
 }: {
-  messages: UIMessage[];
+  messages: {message: string, source: Role}[];
   isLoading: boolean;
 }) {
+
+
+
+  useEffect(() => {
+    console.log(messages);
+    async function Init() {
+      await navigator.mediaDevices.getUserMedia({ audio: true });
+    }
+    Init();
+  }, [messages]);
+  
   return (
-    <div className="flex flex-col p-8  rounded-2xl bg-muted-foreground/20 overflow-y-auto max-w-4xl h-full w-full gap-4">
+    <div className=" p-8 relative z-10  rounded-2xl  overflow-y-auto max-w-4xl h-full w-full gap-4">
       {messages
-        .filter((message) => message.role !== "user")
+        .filter((message) => message.source !== "user")
         .slice(-1)
-        .map((message) => (
-          <div key={message.id} className="whitespace-pre-wrap w-full">
+        .map((message,index) => (
+          <div key={message.message} className=" space-y-4 w-full">
             {!isLoading &&
-              message.parts.map((part, index) => {
-                switch (part.type) {
-                  case "text":
-                    return (
-                      <motion.div
+                      <div
                         key={`text-${index}`}
-                        className="flex flex-col gap-2"
+                        className={cn("flex items-center  gap-2")}
                       >
-                        <Markdown
-                          components={{
-                            a: ({ children, href }) => (
-                            <a href={href} className="text-blue-500">
-                              {children}
-                            </a>
-                          ),
-                        }}
-                      >
-                        {part.text}
-                      </Markdown>
-                    </motion.div>
-                    );
-                }
-              })}
+                        <AiBot isLoading={isLoading} className='size-4 shrink-0' />
+                        <motion.div
+                          initial={{ opacity: 0, y: 10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ duration: 0.5 }}
+                          className="text-md bg-muted-foreground/20 p-4 rounded-2xl"
+                        >
+                          <Markdown>{message.message}</Markdown>
+                        </motion.div>
+                    </div>
+                  
+              }
           </div>
         ))}
     </div>

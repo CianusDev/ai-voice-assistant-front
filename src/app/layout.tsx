@@ -21,7 +21,10 @@ export default function RootLayout({
   return (
     <html lang="fr" className="h-full">
       <body
-        className={`${geistSans.className} bg-background min-h-screen flex flex-col justify-center w-full  antialiased`}
+      // layout-gradient
+        className={`${geistSans.className} 
+        bg-background
+        min-h-screen flex flex-col justify-center items-center w-full  antialiased`}
       >
         <Header/>
         {children}

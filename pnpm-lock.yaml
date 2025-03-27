@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@11labs/react':
+        specifier: ^0.0.8
+        version: 0.0.8(react@19.0.0)
       '@ai-sdk/google':
         specifier: ^1.1.26
         version: 1.1.26(zod@3.24.2)
@@ -17,6 +20,9 @@ importers:
       '@ai-sdk/react':
         specifier: ^1.1.24
         version: 1.1.24(react@19.0.0)(zod@3.24.2)
+      '@lottiefiles/dotlottie-react':
+        specifier: ^0.13.2
+        version: 0.13.2(react@19.0.0)
       '@radix-ui/react-checkbox':
         specifier: ^1.1.4
         version: 1.1.4(@types/react-dom@19.0.4(@types/react@19.0.11))(@types/react@19.0.11)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -107,6 +113,14 @@ importers:
         version: 5.8.2
 
 packages:
+
+  '@11labs/client@0.0.8':
+    resolution: {integrity: sha512-VKjCAePFy9X+M++vkUPJnxT7pPU4BuA+5pgtTUQWkIG27nxc2KxoDlZq1JsRK9DZdwr5zFFA+TwiFcz3+JG8lQ==}
+
+  '@11labs/react@0.0.8':
+    resolution: {integrity: sha512-ukOag3whs1KwNP13EYTpq6hWfl6qrBksZQyam10sQFy+iMTRysYP1vannoITnEpXOGhsZTHgtOdSZ/L4JFcKFQ==}
+    peerDependencies:
+      react: '>=16.8.0'
 
   '@ai-sdk/google@1.1.26':
     resolution: {integrity: sha512-VHhwQQZZ2BPWgsw0CKQDyA7ZddDfNKXQ/lcTSRJD16nD86LaSZkDzx3Wx7Ln1lXmokzPEv/tuFrCs5ntqB2jrA==}
@@ -329,6 +343,14 @@ packages:
     engines: {node: ^18.17.0 || ^20.3.0 || >=21.0.0}
     cpu: [x64]
     os: [win32]
+
+  '@lottiefiles/dotlottie-react@0.13.2':
+    resolution: {integrity: sha512-l/3xBWPN235/pY8C1nUtCD65F6CfjlAYK1zie1YvVB00r6V86Uljy1wCG76vpHT6tXqNK5cBjwBH5MtlrM0U8Q==}
+    peerDependencies:
+      react: ^17 || ^18 || ^19
+
+  '@lottiefiles/dotlottie-web@0.41.0':
+    resolution: {integrity: sha512-hJR3zN9DiQkNjEA0+OJbuPJPXZtbySrfYa61WD5qFc7dBPHGDUaSC6APvwM2FSrzPy0AU4nrOPfExEe6VNznkg==}
 
   '@napi-rs/wasm-runtime@0.2.7':
     resolution: {integrity: sha512-5yximcFK5FNompXfJFoWanu5l8v1hNGqNHh9du1xETp9HWk/B/PzvchX55WYOPaIeNglG8++68AAiauBAtbnzw==}
@@ -2290,6 +2312,13 @@ packages:
 
 snapshots:
 
+  '@11labs/client@0.0.8': {}
+
+  '@11labs/react@0.0.8(react@19.0.0)':
+    dependencies:
+      '@11labs/client': 0.0.8
+      react: 19.0.0
+
   '@ai-sdk/google@1.1.26(zod@3.24.2)':
     dependencies:
       '@ai-sdk/provider': 1.0.12
@@ -2482,6 +2511,13 @@ snapshots:
 
   '@img/sharp-win32-x64@0.33.5':
     optional: true
+
+  '@lottiefiles/dotlottie-react@0.13.2(react@19.0.0)':
+    dependencies:
+      '@lottiefiles/dotlottie-web': 0.41.0
+      react: 19.0.0
+
+  '@lottiefiles/dotlottie-web@0.41.0': {}
 
   '@napi-rs/wasm-runtime@0.2.7':
     dependencies:
